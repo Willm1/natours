@@ -1,0 +1,19 @@
+.u-center-text {text-align: center;}
+
+.u-margin-bottom-small {margin-bottom: 1.5rem;
+
+  @include respond(tab-port) {
+    margin-bottom: 0 !important;
+  }
+}
+.u-margin-bottom-medium {margin-bottom: 6rem !important; // can also add media queries to utility classes
+
+  @include respond(tab-port) {
+    margin-bottom: 5rem !important;
+  }
+}
+
+.u-margin-top-large {margin-top: 10rem ;
+}
+
+

@@ -1,0 +1,131 @@
+.popup {
+    background-color: rgba($color-black, .8);
+    height: 100vh;
+    width: 100%;
+    // to make a pop up fix position
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    // hide popup with opacity and visibility
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+
+    // target to enable popup and toggle opacity and visibility
+    &:target {
+      opacity: 1;
+      visibility: visible;
+    }
+    // when the pop up become the target and we then style the content of the child element
+    &:target &__content {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+
+    &__close {
+      &:link,
+      &:visited {
+        color: $color-grey-dark;
+        position: absolute;
+        top: 0.5rem;
+        right: 2.5rem;
+        font-size: 3rem;
+        text-decoration: none;
+        display: inline-block;
+        transition: all .2s;
+
+      }
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+  &__content {
+    background-color: $color-white;
+    width: 75%;
+    height: 85%;
+    box-shadow: 0 2rem 4rem rgba($color-black, .2);
+    // to center a box, absCenter is mixin with the below
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    @include absCenter;
+    border-radius: 3px;
+    // following used when image is covering border radius
+    overflow: hidden;
+    display: flex;
+    //pop up comes out from back, hide through opacity, scale down and add transition. then add to &:target &__content
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.3);
+    // 3rd bit is delay
+    transition: all .4s .2s;
+
+    @include respond(phone) {
+      display: flex;
+      flex-direction: column;
+      height: 65%;
+
+    }
+  }
+
+  &__left {
+    width: 33.333333333%;
+    display: flex;
+    flex-direction: column;
+    // display: table-cell;
+    @include respond(phone) {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 30%;
+      z-index: -10;
+
+
+    }
+
+  }
+
+  &__right {
+    width: 66.6666666667%;
+    // display: table-cell;
+    // can use this on table to align content vertically
+    // vertical-align: middle;
+    padding: 3rem 5rem;
+
+    @include respond(phone) {
+
+      width: 90%;
+      padding: 2rem 3rem;
+
+
+
+    }
+
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+    // this will automatically create 2 columns
+    column-count: 2;
+    column-gap: 3rem;
+    hyphens: auto;
+    // additional option
+    // column-rule: 1px solid $color-grey-dark;
+
+  }
+
+  &__image {
+    //usually good to display images as a block
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+
+}

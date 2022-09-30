@@ -1,0 +1,20 @@
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  // z-index at -1 moves item behind all other items
+  z-index: -1;
+  opacity: .15;
+  // handy method if component is overflowing
+  overflow: hidden;
+
+  &__content {
+    // set height and width on content to avoid overflow and object fit same as background
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+}
